@@ -4,6 +4,11 @@ const Book = require('../model/book');
 const User = require('../model/user');
 // get the list of existing books in database
 
+router.get('/',(req,res) => {
+    res.status(200).send({
+        message: "Welcome to Project Support",
+    })
+});
 router.get('/books',(req,res) => {
     Book.find({})
         .then(books => {
