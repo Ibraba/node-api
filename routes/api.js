@@ -21,11 +21,6 @@ router.post('/users',(req,res) => {
     User.create(req.body).then(user => {
         res.send(user);
     });
-    /*
-    res.send({
-        email: req.body.email,
-        password: req.body.password
-    });*/
 });
 // update item in database
 router.put('/books/:id',(req,res) => {
