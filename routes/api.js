@@ -10,6 +10,12 @@ router.get('/books',(req,res) => {
             res.send(books);
         });
 });
+router.get('/books/:id',(req,res) => {
+    Book.find({_id:req.params.id})
+        .then(books => {
+            res.send(books);
+        });
+});
 // add a new item to database
 router.post('/books',(req,res) => {
     Book.create(req.body).then(book => {
@@ -29,7 +35,7 @@ router.post('/users',(req,res) => {
 });
 // update item in database
 router.put('/books/:id',(req,res) => {
-    Book.findByIdAndUpdate({_id:req.params.id}, req.body)
+    Book.findOneAndUpdate({_id:req.params.id}, req.body)
         .then(() => {
            Book.findOne({_id:req.params.id})
                .then(book => {
